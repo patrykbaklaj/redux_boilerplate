@@ -1,19 +1,27 @@
 const express = require('express');
 const config = require('config');
 const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
+var cors = require('cors');
 
 const app = express();
 
-app.use(express.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+
+// parse application/json
+app.use(bodyParser.json());
+
+app.use(cors());
+// app.use(express.json());
 
 // If in production
 // const db = process.env.MONGO_URI;
-const db = config.get("mongoURI");
+const db = config.get('mongoURI');
 
 // connect to mongoDB
-mongoose.connect(db, { useNewUrlParser: true }, (err) => {
-    if(err) throw err;
-    console.log("Successfully connected to MongoDB");
+mongoose.connect(db, { useNewUrlParser: true, useCreateIndex: true }, err => {
+    if (err) throw err;
+    console.log('Successfully connected to MongoDB');
 });
 
 // USE ROUTES

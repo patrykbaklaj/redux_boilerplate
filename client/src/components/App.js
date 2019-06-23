@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
-
 import { connect } from 'react-redux';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import ItemAdd from './ItemAdd';
 import { addItem } from '../actions/itemsActions';
+
 
 class App extends Component {
     handleClick = () => {
@@ -15,6 +17,7 @@ class App extends Component {
                 <button onClick={this.handleClick}>
                     Invoke action creator
                 </button>
+                <ItemAdd />
             </div>
         );
     }
