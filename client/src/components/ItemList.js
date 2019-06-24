@@ -29,11 +29,11 @@ class ItemList extends Component {
                     <ListGroupItem >
                         <ListGroupItemHeading>{item.name}</ListGroupItemHeading>
                         <ListGroupItemText>
-                            ListGroupItem texteasdasd asdasd
+                            {item.description}
                         </ListGroupItemText>
                         <Row>
                             <Col md='6'>
-                                <em>Insert date here</em>
+                                <em>{new Date(item.date).toLocaleDateString()} {new Date(item.date).toLocaleTimeString()}</em>
                             </Col>
                             <Col md='6' className='text-right'>
                                 <Button className='mr-2' color='warning'>
@@ -53,7 +53,7 @@ class ItemList extends Component {
     render() {
         return (
             <div>
-                <Container>
+                <Container className="mt-5">
                     <ListGroup>{this.renderItem()}</ListGroup>
                 </Container>
             </div>

@@ -1,4 +1,5 @@
 import items from '../apis/items';
+import history from '../history';
 import { ADD_ITEM, DELETE_ITEM, FETCH_ITEMS } from './types';
 
 // FETCH ALL ITEM
@@ -22,6 +23,7 @@ export const addItem = item => async dispatch => {
             type: ADD_ITEM,
             payload: response.data
         });
+        history.push('/list');
     } catch (e) {
         throw e;
     }

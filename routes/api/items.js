@@ -20,8 +20,8 @@ router.get('/', (req, res) => {
 // Add new item
 
 router.post('/', (req, res) => {
-    const { name } = req.body;
-    const newItem = new Item({ name });
+    const { name, description } = req.body;
+    const newItem = new Item({ name, description });
     newItem.save((err, savedItem) => {
         if (!err) {
             res.status(200).send(savedItem);
